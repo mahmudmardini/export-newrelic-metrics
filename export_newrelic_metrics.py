@@ -2,10 +2,10 @@ import os
 import requests
 import json
 from datetime import datetime, timedelta
-from application_list import seller_base_applications
 import pandas as pd
 import argparse
 
+application_list = []
 parser = argparse.ArgumentParser()
 parser.add_argument('api_key', help='a string argument')
 parser.add_argument('target_days', nargs='?', default='30', help='a string argument')
@@ -14,7 +14,7 @@ arguments = parser.parse_args()
 
 api_key = arguments.api_key
 target_days = int(arguments.target_days)
-target_applications = json.loads(arguments.application_list) or seller_base_applications
+target_applications = json.loads(arguments.application_list) or application_list
 
 headers = {
     'Accept': 'application/json',
